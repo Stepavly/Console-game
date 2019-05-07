@@ -46,7 +46,7 @@ void ConsoleGUI::clear(Point p, Color bg_color)
 	cout << " ";
 }
 
-//Çàëèâàåò ïðÿìîóãîëüíèê [start.x; end.x] [start.y; end.y] öâåòîì bg_color
+//Ã‡Å•Ã«ÄÃ¢Å•ÄºÅˆ ÄÄ‘Ë™Ä›Ã®Ã³ÄƒÃ®Ã«Ã¼Ã­ÄÄ™ [start.x; end.x] [start.y; end.y] Ã¶Ã¢ÄºÅˆÃ®Ä› bg_color
 void ConsoleGUI::clear(Point start, Point end, Color bg_color)
 {
 	set_bg_color(bg_color);
