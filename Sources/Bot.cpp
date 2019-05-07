@@ -55,7 +55,7 @@ void Bot::djk(const vector<vector<int>>& cost, vector<vector<int>>& dp, vector<v
 
 			if (!ok_pos(vertex(toi, toj)) || 
 				dp[v.vi][v.vj] + cost[toi][toj] >= dp[toi][toj] || 
-				field->field[toi][toj] == '@')
+				field->get(toi, toj) == '@')
 				continue;
 
 			dp[toi][toj] = dp[v.vi][v.vj] + cost[toi][toj];
@@ -80,7 +80,7 @@ void Bot::find_path()
 
 		for (int i = 0; i < field->h; i++)
 			for (int j = 0; j < field->w; j++)
-				if (field->field[i][j] == '*')
+				if (field->get(i, j) == '*')
 					best_cost = min(best_cost, dp[i][j]);
 
 		assert(best_cost != (int)1e9);
@@ -90,7 +90,7 @@ void Bot::find_path()
 
 		for (int i = 0; i < field->h; i++)
 			for (int j = 0; j < field->w; j++)
-				if (field->field[i][j] == '*' && dp[i][j] == best_cost)
+				if (field->get(i, j) == '*' && dp[i][j] == best_cost)
 				{
 					vtx.push(vertex(i, j));
 					calced[i][j] = 1;
@@ -145,7 +145,7 @@ void Bot::find_path()
 
 	for (int i = 0; i < field->h; i++)
 		for (int j = 0; j < field->w; j++)
-			if (dp[i][j] < min_cost && field->field[i][j] == '*')
+			if (dp[i][j] < min_cost && field->get(i, j) == '*')
 			{
 				min_cost = dp[i][j];
 				start = vertex(i, j);
