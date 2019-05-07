@@ -43,5 +43,6 @@ struct GameField
 	void generate(int, char, char);
 	GameField operator=(const GameField&);
 	char get(int, int);
+	void set(int, int, char);
 };
 #endif

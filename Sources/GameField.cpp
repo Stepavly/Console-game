@@ -183,6 +183,11 @@ char GameField::get(int i, int j)
 	return field[i][j];
 }
 
+void GameField::set(int i, int j, char c)
+{
+	field[i][j] = c;
+}
+
 GameField GameField::operator=(const GameField& r)
 {
 	GameField res;
