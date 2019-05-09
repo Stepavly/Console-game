@@ -27,19 +27,19 @@ void drawcell(int i, int j) {
 	bool hero = 0, enemy = 0, star = 0;
 	for (int k = 0; k < 4; k++) {
 		for (int l = 0; l < 4; l++) {
-			if (arr.get(i * 4 + k, j * 4 + k + l) == 'I') {
+			if (arr.get(i * 4 + k, j * 4 + l) == 'I') {
 				hero = 1;
 			}
-			else if (arr.get(i * 4 + k, j * 4 + k + l) == 'H') {
+			else if (arr.get(i * 4 + k, j * 4 + l) == 'H') {
 				enemy = 1;
 			}
-			else if (arr.get(i * 4 + k, j * 4 + k + l) == '*') {
+			else if (arr.get(i * 4 + k, j * 4 + l) == '*') {
 				star = 1;
 			}
-			else if (arr.get(i * 4 + k, j * 4 + k + l) == '@') {
+			else if (arr.get(i * 4 + k, j * 4 + l) == '@') {
 				wall++;
 			}
-			else if (arr.get(i * 4 + k, j * 4 + k + l) == ' ') {
+			else if (arr.get(i * 4 + k, j * 4 + l) == ' ') {
 				space++;
 			}
 		}
@@ -144,7 +144,7 @@ int main() {
 
 	arr = GameField(sz, sz);
 	arr.make_border(8, '@');
-	arr.generate(uniform_int_distribution<int>(20, 90)(gen), '@', ' ');
+	arr.generate(uniform_int_distribution<int>(10, 20)(gen), '@', ' ');
 	while (1) {
 		int i = uniform_int_distribution<int>(0, sz - 1)(gen), j = uniform_int_distribution<int>(0, sz - 1)(gen);
 		if (arr.get(i, j) == ' ') {
@@ -163,7 +163,7 @@ int main() {
 	}
 	for (int i = 0; i < sz; i++) {
 		for (int j = 0; j < sz; j++) {
-			if (arr.get(i, j) == ' ' && uniform_int_distribution<int>(0, 8)(gen)) {
+			if (arr.get(i, j) == ' ' && uniform_int_distribution<int>(0, 8)(gen) <= 2) {
 				arr.set(i, j, '*');
 				targets++;
 			}
@@ -186,7 +186,7 @@ int main() {
 			if (ok(me.first + 1, me.second)) {
 				to = { me.first + 1, me.second };
 			}
-			
+
 		}
 		else if (c == 72) {
 			//up
@@ -215,7 +215,7 @@ int main() {
 			drawcell(from.first / 4, from.second / 4);
 			drawcell(to.first / 4, to.second / 4);
 			me = to;
-			
+
 			print(0);
 		}
 		if (scoreme + scorehim == targets) {
