@@ -144,7 +144,7 @@ int main() {
 
 	arr = GameField(sz, sz);
 	arr.make_border(8, '@');
-	arr.generate(rand() % 70 + 20, '@', ' ');
+	arr.generate(uniform_int_distribution<int>(20, 90)(gen), '@', ' ');
 	while (1) {
 		int i = uniform_int_distribution<int>(0, sz - 1)(gen), j = uniform_int_distribution<int>(0, sz - 1)(gen);
 		if (arr.get(i, j) == ' ') {
