@@ -5,7 +5,9 @@
 #include <conio.h>
 #include <random>
 #include <time.h>
-#include "Graphics.cpp"
+#include "Graphics.h"
+#include "Bot.h"
+#include "GameField.h"
 
 using namespace std;
 
