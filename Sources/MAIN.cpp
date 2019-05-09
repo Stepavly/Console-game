@@ -17,6 +17,7 @@ char minimap[sz / 4][sz / 4];
 int scoreme = 0, scorehim = 0, targets = 0;
 pair <int, int> me, him;
 ConsoleGUI p;
+Bot b;
 
 inline bool ok(int i, int j) {
 	return i >= 0 && i < sz && j >= 0 && j < sz && (arr.get(i, j) == ' ' || arr.get(i, j) == '*');
@@ -138,6 +139,18 @@ void print(bool isfirst) {
 	p.set_pos({ 24,19 });
 }
 
+void turn() {
+	b.move();
+	arr.set(him.first, him.second, ' ');
+	drawcell(him.first / 4, him.second / 4);
+	him = { b.pos.vi, b.pos.vj };
+	if (arr.get(him.first, him.second) == '*') {
+		scorehim++;
+		arr.set(him.first, him.second, ' ');
+	}
+	arr.set(him.first, him.second, 'H');
+	drawcell(him.first / 4, him.second / 4);
+}
 
 int main() {
 	mt19937 gen(chrono::high_resolution_clock::now().time_since_epoch().count());
@@ -169,6 +182,7 @@ int main() {
 			}
 		}
 	}
+	b = Bot(arr, { him.first, him.second });
 	drawmap();
 	print(1);
 	char c;
@@ -215,7 +229,7 @@ int main() {
 			drawcell(from.first / 4, from.second / 4);
 			drawcell(to.first / 4, to.second / 4);
 			me = to;
-
+			turn();
 			print(0);
 		}
 		if (scoreme + scorehim == targets) {
