@@ -41,7 +41,7 @@ struct GameField
 	//[si; ei) [sj; ej)
 	void print(int, int, int, int);
 	void generate(int, char, char);
-	GameField operator=(const GameField&);
+	void operator=(const GameField&);
 	char get(int, int);
 	void set(int, int, char);
 	void swap(int, int, int, int);
