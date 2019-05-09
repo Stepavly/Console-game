@@ -169,7 +169,8 @@ int main() {
 			}
 		}
 	}
-	print(0);
+	drawmap();
+	print(1);
 	char c;
 	while (1) {
 		c = _getch();
