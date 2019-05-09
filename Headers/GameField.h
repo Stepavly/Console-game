@@ -44,5 +44,8 @@ struct GameField
 	GameField operator=(const GameField&);
 	char get(int, int);
 	void set(int, int, char);
+	void swap(int, int, int, int);
+	string operator[](int) const;
+	string& operator[](int);
 };
 #endif

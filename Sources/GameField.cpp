@@ -188,6 +188,11 @@ void GameField::set(int i, int j, char c)
 	field[i][j] = c;
 }
 
+void GameField::swap(int i1, int j1, int i2, int j2)
+{
+	std::swap(field[i1][j1], field[i2][j2]);
+}
+
 GameField GameField::operator=(const GameField& r)
 {
 	GameField res;
@@ -198,4 +203,14 @@ GameField GameField::operator=(const GameField& r)
 	res.field = r.field;
 
 	return res;
+}
+
+string GameField::operator[](int i) const
+{
+	return field[i];
+}
+
+string& GameField::operator[](int i)
+{
+	return field[i];
 }

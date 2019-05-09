@@ -160,7 +160,20 @@ void Bot::find_path()
 int Bot::move()
 {
 	if (path.empty())
-		return 0;
+	{
+		find_path();
+
+		if (path.empty())
+			return 0;
+		else
+			return move();
+	}
+	else if (field->field[path[0].vi][path[0].vj] != '*')
+	{
+		path = {};
+		find_path();
+		return move();
+	}
 
 	pos = path.back();
 	path.pop_back();
