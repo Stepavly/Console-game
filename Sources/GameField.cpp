@@ -195,9 +195,9 @@ void GameField::swap(int i1, int j1, int i2, int j2)
 
 void GameField::operator=(const GameField& r)
 {
+	border_width = r.border_width;
 	h = r.h;
 	w = r.w;
-	border_width = r.border_width;
 	field = r.field;
 	gen = r.gen;
 }
