@@ -138,12 +138,13 @@ void print(bool isfirst) {
 	p.set_pos({ 24,19 });
 }
 
+
 int main() {
 	mt19937 gen(chrono::high_resolution_clock::now().time_since_epoch().count());
 
 	arr = GameField(sz, sz);
 	arr.make_border(8, '@');
-	arr.generate(rand() % 20 + 20, '@', ' ');
+	arr.generate(uniform_int_distribution<int>(20, 90)(gen), '@', ' ');
 	while (1) {
 		int i = uniform_int_distribution<int>(0, sz - 1)(gen), j = uniform_int_distribution<int>(0, sz - 1)(gen);
 		if (arr.get(i, j) == ' ') {
@@ -168,6 +169,7 @@ int main() {
 			}
 		}
 	}
+	drawmap();
 	print(1);
 	char c;
 	while (1) {
