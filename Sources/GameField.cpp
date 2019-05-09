@@ -193,16 +193,13 @@ void GameField::swap(int i1, int j1, int i2, int j2)
 	std::swap(field[i1][j1], field[i2][j2]);
 }
 
-GameField GameField::operator=(const GameField& r)
+void GameField::operator=(const GameField& r)
 {
-	GameField res;
-	res.border_width = r.border_width;
-	res.w = r.w;
-	res.h = r.h;
-	res.gen = r.gen;
-	res.field = r.field;
-
-	return res;
+	h = r.h;
+	w = r.w;
+	border_width = r.border_width;
+	field = r.field;
+	gen = r.gen;
 }
 
 string GameField::operator[](int i) const
