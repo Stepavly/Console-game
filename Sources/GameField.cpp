@@ -69,12 +69,12 @@ GameField::GameField(int W, int H, char c)
 	field = vector<vector<Cell>>(h, vector<Cell>(w, c));
 }
 
-char GameField::get(int i, int j)
+Cell GameField::get(int i, int j) const
 {
-	return field[i][j].text;
+	return field[i][j];
 }
 
-void GameField::set(int i, int j, char c)
+void GameField::set(int i, int j, Cell c)
 {
 	field[i][j] = c;
 }

@@ -62,18 +62,15 @@ struct GameField
 	vector<vector<Cell>> field;
 	int w, h;
 
-	void fill(char);
+	void fill(char c);
 	//[si; ei) [sj; ej)
-	void fill(int, int, int, int, char);
+	void fill(int i1, int j1, int i2, int j2, char c);
 	GameField();
-	GameField(int, int);
-	GameField(int, int, char);
-	void print();
-	//[si; ei) [sj; ej)
-	void print(int, int, int, int);
+	GameField(int W, int H);
+	GameField(int W, int H, char c);
 	void operator=(const GameField&);
-	char get(int, int);
-	void set(int, int, char);
-	void swap(int, int, int, int);
+	Cell get(int i, int j) const;
+	void set(int i, int j, Cell c);
+	void swap(int i1, int j1, int i2, int j2);
 };
 #endif
