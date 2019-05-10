@@ -52,11 +52,11 @@ struct ConsoleGUI
 	void clear(Point p, Color bg_color);
 	void clear(Point start, Point end, Color bg_color);
 	void clear_all();
-	void print(char c);
-	void print(int n);
-	void print(string text);
-	void print(char c, Color font, Color back);
-	void print(int n, Color font, Color back);
-	void print(string text, Color font, Color back);
+	int print(char c);
+	int print(int n);
+	int print(string text);
+	int print(char c, Color font, Color back);
+	int print(int n, Color font, Color back);
+	int print(string text, Color font, Color back);
 };
 #endif

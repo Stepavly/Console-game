@@ -65,38 +65,44 @@ void ConsoleGUI::clear_all()
 	system("cls");
 }
 
-void ConsoleGUI::print(char c)
+int ConsoleGUI::print(char c)
 {
 	cout << c;
+	return 1;
 }
 
-void ConsoleGUI::print(int n)
+int ConsoleGUI::print(int n)
 {
 	cout << n;
+	return to_string(n).size();
 }
 
-void ConsoleGUI::print(string text)
+int ConsoleGUI::print(string text)
 {
 	cout << text;
+	return text.size();
 }
 
-void ConsoleGUI::print(char c, Color font, Color back)
+int ConsoleGUI::print(char c, Color font, Color back)
 {
 	set_text_color(font);
 	set_bg_color(back);
 	print(c);
+	return 1;
 }
 	
-void ConsoleGUI::print(int n, Color font, Color back)
+int ConsoleGUI::print(int n, Color font, Color back)
 {
 	set_text_color(font);
 	set_bg_color(back);
 	print(n);
+	return to_string(n).size();
 }
 
-void ConsoleGUI::print(string text, Color font, Color back)
+int ConsoleGUI::print(string text, Color font, Color back)
 {
 	set_text_color(font);
 	set_bg_color(back);
 	print(text);
+	return text.size();
 }
